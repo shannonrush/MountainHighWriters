@@ -1,0 +1,15 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /   controllers.Application.index
+
+# Events
+GET		/events			controllers.Events.list()
+GET		/event/:id		controllers.Events.details(id: Int)
+GET		/event/:id/edit	controllers.Events.edit(id: Int)
+PUT		/event/:id		controllers.Events.update(id: Int)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
