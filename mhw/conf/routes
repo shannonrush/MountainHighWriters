@@ -6,7 +6,7 @@
 GET     /   controllers.Application.index
 
 # Events
-GET		/events			controllers.Events.list()
+GET		/events			controllers.Events.index()
 GET		/event/:id		controllers.Events.details(id: Int)
 GET		/event/:id/edit	controllers.Events.edit(id: Int)
 PUT		/event/:id		controllers.Events.update(id: Int)

@@ -1,0 +1,7 @@
+@(events: List[Event])
+<h1>Events</h1>
+<ul>
+	@for(event <- events) {
+  		<li>@event.name</li>
+	}
+</ul>
