@@ -5,11 +5,16 @@ import models.Event
 
 
 object Events extends Controller {
-  def index = Action {
-	  val events = Event.findAll
-	  Ok(views.html.events.index(events))
+  
+  def index = Action { 
+    Ok(views.html.events.index(Event.findAll)) 
   }
-  def details(id: Int) = Action { NotImplemented }
-  def edit(id: Int) = Action { NotImplemented }
-  def update(id: Int) = Action { NotImplemented }
+  
+  def show(id: Long) = Action { implicit request =>
+    Event.findById(id).map {event =>
+      Ok(views.html.events.show(event))
+    }.getOrElse(NotFound)
+  }
+  
+  
 }
