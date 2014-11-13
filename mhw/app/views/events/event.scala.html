@@ -1,0 +1,10 @@
+@(eventForm: Form[Event])
+
+@main{
+	@helper.form(action = routes.Events.save()) {
+		@helper.inputText(eventForm("name"))
+		@helper.textarea(eventForm("description"))
+		@helper.inputDate(eventForm("date"))
+		<button type="submit">Create Event</button>
+	}
+}

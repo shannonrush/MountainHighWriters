@@ -1,9 +1,10 @@
 @(events: List[Event])
-@main {
+@main{
 	<h1>Events</h1>
 	<ul>
 		@events.map { event =>
 	  		<li><a href="@controllers.routes.Events.show(event.id)">@event.name</a></li>
 		}
 	</ul>
+	<a href="@controllers.routes.Events.newEvent">New Event</a>
 }
