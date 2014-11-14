@@ -1,4 +1,4 @@
-@(content: Html)
+@(content: Html)(implicit flash: Flash)
 
 <!DOCTYPE html>
 
@@ -8,6 +8,14 @@
     </head>
     <body>
     	<div id="navigation">@navigation()</div>
+    	<div id="flash">
+    		@if(flash.get("success").isDefined){
+      			<div class="alert alert-success">@flash.get("success")</div>
+    		}
+			@if(flash.get("error").isDefined){
+      			<div class="alert alert-error">@flash.get("error")</div>
+    		}
+   		</div>
         <div id="content">@content</div>
     </body>
 </html>

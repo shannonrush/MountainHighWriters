@@ -1,7 +1,14 @@
-@(eventForm: Form[Event])
+@(eventForm: Form[Event])(implicit flash: Flash)
 
 @main{
-	@helper.form(action = routes.Events.save()) {
+	@if(eventForm.hasGlobalErrors) {
+  		<ul>
+ 			 @for(error <- eventForm.globalErrors) {
+    			<li>@error.message</li>
+  			}
+  		</ul>
+	}
+	@helper.form(action = routes.Events.save, 'id -> "validForm") {
 		@helper.inputText(eventForm("name"))
 		@helper.textarea(eventForm("description"))
 		@helper.inputDate(eventForm("date"))

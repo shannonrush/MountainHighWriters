@@ -4,11 +4,11 @@ import org.squeryl.PrimitiveTypeMode._
 import org.squeryl.KeyedEntity
 
 case class Event (
-	id: Long,
+	id: Option[Long],
 	name: String,
 	date: java.util.Date,
 	description: String
-) extends KeyedEntity[Long]
+) extends KeyedEntity[Option[Long]]
 
 object Event {
   import Database.eventsTable
@@ -20,4 +20,8 @@ object Event {
   def findById(id: Long) = inTransaction {
     from (eventsTable) (e => where(e.id === id) select e).headOption
   } 
+  
+  def insert(event: Event) = inTransaction {
+    eventsTable.insert(event.copy())
+  }
 }
