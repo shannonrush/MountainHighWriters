@@ -11,7 +11,7 @@
 	@helper.form(action = routes.Events.save, 'id -> "validForm") {
 		@helper.inputText(eventForm("name"))
 		@helper.textarea(eventForm("description"))
-		@helper.inputDate(eventForm("date"))
+		<input id="datetimepicker" type="text" style="display: none;">
 		<button type="submit">Create Event</button>
 	}
 }
